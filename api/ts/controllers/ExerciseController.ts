@@ -1,4 +1,4 @@
-import ExerciseDatabase from "../data_layer/interfaces/ExerciseDatabase";
+import ExerciseDatabase from '../data_layer/interfaces/ExerciseDatabase';
 
 class ExerciseController {
   private database: ExerciseDatabase;
@@ -6,39 +6,26 @@ class ExerciseController {
     this.database = database;
   }
 
-  public get(id: App.IdType): App.Exercise.Exercise {
-    const response = this.database.get(id);
-    if (response.status) {
-      return response.data;
-    } 
-    throw new Error(response.error);
+  public get(id: App.IdType): Promise<App.Exercise.Exercise> {
+    return this.database.get(id);
   }
-  public getList(): Array<App.Exercise.Exercise> {
-    console.log(this)
-    const response = this.database.getList();
-    if (response.status) {
-      return response.data;
-    } 
-    throw new Error(response.error);
+
+  public getList(): Promise<Array<App.Exercise.Exercise>> {
+    return this.database.getList();
   }
-  public create(data: App.Exercise.Exercise): App.IdType {
-    const response = this.database.create(data);
-    if (response.status) {
-      return response.data;
-    } 
-    throw new Error(response.error);
+
+  public create(data: App.Exercise.ExerciseData): Promise<App.IdType> {
+    return this.database.create(data);
   }
-  public update(id: App.IdType, data: App.Exercise.Exercise): void {
-    const response = this.database.update(id, data);
-    if (!response.status) {
-      throw new Error(response.error);
-    } 
+
+  public update(id: App.IdType, data: App.Exercise.ExerciseData): Promise<void> {
+    this.database.update(id, data);
+    return;
   }
-  public delete(id: App.IdType): void {
-    const response = this.database.delete(id);
-    if (!response.status) {
-      throw new Error(response.error);
-    } 
+  
+  public delete(id: App.IdType): Promise<void> {
+    this.database.delete(id);
+    return;
   }
 }
 
