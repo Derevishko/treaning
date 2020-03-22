@@ -46,13 +46,19 @@ declare namespace App {
     }
   }
 
-  export namespace Treaning {
-    interface TreaningData {
+  export namespace Training {
+    interface TrainingData {
       name: string,
-      exercises: Array<Exercise.Exercise>
+      exercises: Array<{
+        id: App.IdType,
+        approaches: Array<{
+          weight: number,
+          count: number
+        }>
+      }>,
     }
 
-    interface Treaning extends TreaningData {
+    interface Training extends TrainingData {
       id: IdType
     }
   }

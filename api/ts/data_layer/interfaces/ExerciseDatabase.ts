@@ -1,5 +1,3 @@
-import { XOR } from 'ts-xor';
-
 abstract class ExerciseDatabase {
   public abstract get(id: App.IdType): Promise<App.Exercise.Exercise>
   public abstract getList(): Promise<Array<App.Exercise.Exercise>>

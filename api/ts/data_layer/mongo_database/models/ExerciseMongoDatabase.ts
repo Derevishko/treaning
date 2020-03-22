@@ -1,10 +1,8 @@
-import ExerciseDatabase from '../interfaces/ExerciseDatabase';
+import ExerciseDatabase from '../../interfaces/ExerciseDatabase';
 import {model} from 'mongoose';
-import { Exercise } from './schemas/Schema';
+import ExerciseSchema from '../schemas/ExerciseSchema';
 
-const ExerciseModel =  model('Exercise', Exercise);
-const exerciseModel = new ExerciseModel();
-exerciseModel.save();
+const ExerciseModel =  model('Exercise', ExerciseSchema);
 
 class ExerciseMongoDatabase extends ExerciseDatabase {
   public async get(id: App.IdType): Promise<App.Exercise.Exercise> {

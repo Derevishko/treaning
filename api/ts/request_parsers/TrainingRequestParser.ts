@@ -1,7 +1,7 @@
 import RequestParser from "./RequestParser";
 import { XOR } from 'ts-xor';
 
-class ExerciseRequestParser extends RequestParser {
+class TrainingRequestParser extends RequestParser {
   public get(req: any): XOR<App.RequestParser.SuccessResult<null, null, { id: App.IdType }>, App.RequestParser.FailedResult> {
     const {body, query, params} = req;
     return {
@@ -11,7 +11,7 @@ class ExerciseRequestParser extends RequestParser {
       params,
     };
   }
-  public create(req: any): XOR<App.RequestParser.SuccessResult<App.Exercise.ExerciseData>, App.RequestParser.FailedResult> {
+  public create(req: any): XOR<App.RequestParser.SuccessResult<App.Training.TrainingData>, App.RequestParser.FailedResult> {
     const {body, query, params} = req;
     return {
       status: true,
@@ -20,7 +20,7 @@ class ExerciseRequestParser extends RequestParser {
       params,
     };
   }
-  public update(req: any): XOR<App.RequestParser.SuccessResult<App.Exercise.ExerciseData, null, { id: App.IdType }>, App.RequestParser.FailedResult> {
+  public update(req: any): XOR<App.RequestParser.SuccessResult<App.Training.TrainingData, null, { id: App.IdType }>, App.RequestParser.FailedResult> {
     const {body, query, params} = req;
     return {
       status: true,
@@ -41,4 +41,4 @@ class ExerciseRequestParser extends RequestParser {
   }
 }
 
-export default ExerciseRequestParser;
+export default TrainingRequestParser;
